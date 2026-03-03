@@ -1,6 +1,9 @@
 {
   "name": "leopple-games",
   "private": true,
+  "version": "0.0.0",
+  "author": "Leonardo Trindade",
+  "license": "MIT",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -9,14 +12,13 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
-    "prettier": "^3.7.4",
-    "turbo": "^2.8.12",
+    "prettier": "3.7.4",
+    "turbo": "2.8.12",
     "typescript": "5.9.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": "24"
   },
-  "packageManager": "npm@11.6.2",
   "workspaces": [
     "apps/*",
     "packages/*"
