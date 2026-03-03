@@ -25,7 +25,6 @@ const Configuration = {
     ],
   },
 
-  // Não precisa de plugin customizado agora
   plugins: [],
 };
 
