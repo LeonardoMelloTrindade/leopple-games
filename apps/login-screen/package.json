@@ -1,6 +1,6 @@
 {
   "name": "login-screen",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -23,6 +23,7 @@
     "@vitejs/plugin-vue": "6.0.4",
     "@vue/test-utils": "2.4.6",
     "@vue/tsconfig": "0.8.1",
+    "@leopple-games/typescript": "*",
     "jsdom": "28.1.0",
     "npm-run-all2": "8.0.4",
     "typescript": "5.9.3",
