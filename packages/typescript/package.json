@@ -1,0 +1,14 @@
+{
+  "name": "@leopple-games/typescript",
+  "version": "0.0.1",
+  "description": "Typescript configuration for Leopple Games",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "tsconfig.base.json",
+    "tsconfig.node.json",
+    "tsconfig.react.json"
+  ]
+}

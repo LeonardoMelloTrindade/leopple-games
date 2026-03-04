@@ -1,15 +1,13 @@
 {
+  "extends": "@leopple-games/typescript/tsconfig.base.json",
   "compilerOptions": {
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "target": "ESNext",
     "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "strict": true,
     "types": [
       "vite/client"
     ]
