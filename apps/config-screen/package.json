@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
+    "check-types": "tsc -p tsconfig.app.json --noEmit",
     "ng": "ng",
     "dev": "ng serve",
     "build": "ng build",
