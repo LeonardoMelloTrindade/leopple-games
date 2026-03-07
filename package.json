@@ -12,7 +12,10 @@
     "check-types": "turbo run check-types",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker:dev": "turbo run docker:dev",
+    "docker:dev:down": "docker compose -f docker-compose.dev.yaml down",
+    "docker:dev:build": "docker compose -f docker-compose.dev.yaml build"
   },
   "devDependencies": {
     "@commitlint/cli": "20.4.3",
