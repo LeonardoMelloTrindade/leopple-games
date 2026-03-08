@@ -31,5 +31,65 @@ services:
     networks:
       - leopple-games-network
 
+  games-list-screen:
+    build:
+      context: .
+      dockerfile: apps/games-list-screen/Dockerfile
+    command:
+      - npm
+      - run
+      - dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./apps/games-list-screen:/app/apps/games-list-screen
+    networks:
+      - leopple-games-network
+
+  configuration-screen:
+    build:
+      context: .
+      dockerfile: apps/config-screen/Dockerfile
+    command:
+      - npm
+      - run
+      - dev
+    ports:
+      - "3003:3003"
+    volumes:
+      - ./apps/config-screen:/app/apps/config-screen
+    networks:
+      - leopple-games-network
+
+  details-game-screen:
+    build:
+      context: .
+      dockerfile: apps/details-game-screen/Dockerfile
+    command:
+      - npm
+      - run
+      - dev
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./apps/details-game-screen:/app/apps/details-game-screen
+    networks:
+      - leopple-games-network
+  
+  my-games-screen:
+    build:
+      context: .
+      dockerfile: apps/my-games-screen/Dockerfile
+    command:
+      - npm
+      - run
+      - dev
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./apps/my-games-screen:/app/apps/my-games-screen
+    networks:
+      - leopple-games-network
+
 networks:
   leopple-games-network:

@@ -1,7 +1,7 @@
 {
   "name": "my-games-screen",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
@@ -12,7 +12,8 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test:unit": "vitest",
-    "test": "npm run test:unit -- --run"
+    "test": "npm run test:unit -- --run",
+    "docker:dev": "docker compose -f ../../docker-compose.dev.yaml up my-games-screen"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "7.0.0",
