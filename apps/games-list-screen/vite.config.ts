@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, type PluginOption } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
@@ -7,5 +7,5 @@ export default defineConfig({
     port: 3001,
     host: true
   },
-  plugins: [react()],
+  plugins: [react() as PluginOption],
 })

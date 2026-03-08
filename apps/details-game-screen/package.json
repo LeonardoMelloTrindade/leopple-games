@@ -15,7 +15,7 @@
   "devDependencies": {
     "@leopple-games/typescript": "*",
     "typescript": "5.7.2",
-    "vite": "6.0.0",
+    "vite": "7.3.1",
     "vite-plugin-solid": "2.11.8"
   },
   "dependencies": {
