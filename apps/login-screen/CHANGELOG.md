@@ -1,5 +1,12 @@
 # login-screen
 
+## 0.1.2
+
+### Patch Changes
+
+- 6b1b0fc: chore(39): add command check-types for all apps and fix problems
+- 1b8360e: chore(41): create Dockerfile from app login-screen
+
 ## 0.1.1
 
 ### Patch Changes

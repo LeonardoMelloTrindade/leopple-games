@@ -1,5 +1,12 @@
 # backend
 
+## 0.1.2
+
+### Patch Changes
+
+- 3d4dc93: chore(41): create Dockerfile and new command for docker:dev
+- 6b1b0fc: chore(39): add command check-types for all apps and fix problems
+
 ## 0.1.1
 
 ### Patch Changes
