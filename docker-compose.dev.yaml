@@ -61,5 +61,20 @@ services:
     networks:
       - leopple-games-network
 
+  details-game-screen:
+    build:
+      context: .
+      dockerfile: apps/details-game-screen/Dockerfile
+    command:
+      - npm
+      - run
+      - dev
+    ports:
+      - "3004:3004"
+    volumes:
+      - ./apps/details-game-screen:/app/apps/details-game-screen
+    networks:
+      - leopple-games-network
+
 networks:
   leopple-games-network:
