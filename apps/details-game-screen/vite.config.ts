@@ -6,10 +6,9 @@ export default defineConfig({
   base: '/details-game',
   server: {
     port: 3004,
-    host: true
+    host: true,
   },
   build: {
     target: 'esnext',
   },
 });
-

@@ -1,8 +1,7 @@
 <script lang="ts">
-	let { children } = $props();
+  const { children } = $props();
 </script>
 
-<svelte:head>
-</svelte:head>
+<svelte:head></svelte:head>
 
 {@render children()}

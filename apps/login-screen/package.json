@@ -1,11 +1,12 @@
 {
   "name": "login-screen",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
+    "lint": "eslint . --fix",
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
@@ -25,6 +26,7 @@
     "@vue/test-utils": "2.4.6",
     "@vue/tsconfig": "0.8.1",
     "@leopple-games/typescript": "*",
+    "@leopple-games/eslint": "*",
     "jsdom": "28.1.0",
     "npm-run-all2": "8.0.4",
     "typescript": "5.9.3",
