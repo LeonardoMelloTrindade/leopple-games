@@ -13,6 +13,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test:unit": "vitest",
     "test": "npm run test:unit -- --run",
+    "lint": "eslint . --fix",
     "docker:dev": "docker compose -f ../../docker-compose.dev.yaml up my-games-screen"
   },
   "devDependencies": {
@@ -21,6 +22,7 @@
     "@sveltejs/vite-plugin-svelte": "6.2.4",
     "svelte": "5.51.0",
     "svelte-check": "4.4.2",
+    "@leopple-games/eslint": "*",
     "@leopple-games/typescript": "*",
     "typescript": "5.9.3",
     "vite": "7.3.1",

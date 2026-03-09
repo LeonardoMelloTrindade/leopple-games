@@ -1,13 +1,11 @@
-import './App.css'
+import './App.css';
 
 const App = () => {
   return (
     <>
-      <div>
-        teste
-      </div>
+      <div>teste</div>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

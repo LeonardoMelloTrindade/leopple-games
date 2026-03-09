@@ -1,12 +1,10 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <header>
-    salvess
-  </header>
+
+  <header>salvess</header>
+
 </template>
 
-<style scoped>
+<style scoped></style>
 
-</style>

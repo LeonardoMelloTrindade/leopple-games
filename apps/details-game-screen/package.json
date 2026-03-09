@@ -8,11 +8,13 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
+    "lint": "eslint . --fix",
     "serve": "vite preview",
     "docker:dev": "docker compose -f ../../docker-compose.dev.yaml up details-game-screen"
   },
   "license": "MIT",
   "devDependencies": {
+    "@leopple-games/eslint": "*",
     "@leopple-games/typescript": "*",
     "typescript": "5.7.2",
     "vite": "7.3.1",
