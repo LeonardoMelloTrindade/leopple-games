@@ -1,6 +1,6 @@
 {
   "name": "@leopple-games/eslint",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ESLint shared configuration for Leopple Games",
   "type": "module",
   "main": "index.js",
