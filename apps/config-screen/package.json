@@ -11,7 +11,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "eslint . --fix",
-    "docker:dev": "docker compose -f ../../docker-compose.dev.yaml up configuration-screen"
+    "docker:dev": "docker compose -f ../../docker-compose.dev.yml up configuration-screen"
   },
   "dependencies": {
     "@angular/common": "21.2.0",

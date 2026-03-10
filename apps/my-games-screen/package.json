@@ -14,7 +14,7 @@
     "test:unit": "vitest",
     "test": "npm run test:unit -- --run",
     "lint": "eslint . --fix",
-    "docker:dev": "docker compose -f ../../docker-compose.dev.yaml up my-games-screen"
+    "docker:dev": "docker compose -f ../../docker-compose.dev.yml up my-games-screen"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "7.0.0",
