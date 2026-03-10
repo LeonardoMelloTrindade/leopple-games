@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --fix",
     "preview": "vite preview",
-    "docker:dev": "docker compose -f ../../docker-compose.dev.yaml up games-list-screen"
+    "docker:dev": "docker compose -f ../../docker-compose.dev.yml up games-list-screen"
   },
   "dependencies": {
     "react": "19.2.0",

@@ -10,7 +10,7 @@
     "build": "vite build",
     "lint": "eslint . --fix",
     "serve": "vite preview",
-    "docker:dev": "docker compose -f ../../docker-compose.dev.yaml up details-game-screen"
+    "docker:dev": "docker compose -f ../../docker-compose.dev.yml up details-game-screen"
   },
   "license": "MIT",
   "devDependencies": {

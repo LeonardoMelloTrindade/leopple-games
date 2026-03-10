@@ -13,8 +13,12 @@ services:
       - ./apps/backend:/app/apps/backend
       - ./node_modules:/app/node_modules
       - ./apps/backend/node_modules:/app/apps/backend/node_modules
+    depends_on:
+      - postgresql
+      - redis
     networks:
       - leopple-games-network
+
 
   login-screen:
     build:
@@ -31,6 +35,7 @@ services:
     networks:
       - leopple-games-network
 
+
   games-list-screen:
     build:
       context: .
@@ -45,6 +50,7 @@ services:
       - ./apps/games-list-screen:/app/apps/games-list-screen
     networks:
       - leopple-games-network
+
 
   configuration-screen:
     build:
@@ -61,6 +67,7 @@ services:
     networks:
       - leopple-games-network
 
+
   details-game-screen:
     build:
       context: .
@@ -75,6 +82,7 @@ services:
       - ./apps/details-game-screen:/app/apps/details-game-screen
     networks:
       - leopple-games-network
+
   
   my-games-screen:
     build:
@@ -90,6 +98,33 @@ services:
       - ./apps/my-games-screen:/app/apps/my-games-screen
     networks:
       - leopple-games-network
+
+  
+  postgresql:
+    image: postgres:18
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=leopple-games
+    ports:
+      - "5432:5432"
+    volumes:
+      - polls_pg_data:/var/lib/postgresql
+    networks:
+      - leopple-games-network
+  
+  redis:
+    image: redis:8
+    ports:
+      - "6379:6379"
+    volumes:
+      - polls_redis_data:/data
+    networks:
+      - leopple-games-network
+
+volumes:
+  polls_pg_data:
+  polls_redis_data:
 
 networks:
   leopple-games-network:

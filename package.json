@@ -14,8 +14,11 @@
     "version-packages": "changeset version",
     "prepare": "husky",
     "docker:dev": "turbo run docker:dev",
-    "docker:dev:down": "docker compose -f docker-compose.dev.yaml down",
-    "docker:dev:build": "docker compose -f docker-compose.dev.yaml build"
+    "docker:dev:all": "docker compose -f docker-compose.dev.yml up",
+    "docker:dev:down": "docker compose -f docker-compose.dev.yml down",
+    "docker:dev:build": "docker compose -f docker-compose.dev.yml build",
+    "docker:db": "docker compose -f docker-compose.dev.yml up postgresql redis",
+    "docker:db:down": "docker compose -f docker-compose.dev.yml down postgresql redis"
   },
   "devDependencies": {
     "@commitlint/cli": "20.4.3",
