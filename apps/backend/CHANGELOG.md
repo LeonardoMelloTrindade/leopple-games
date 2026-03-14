@@ -1,5 +1,11 @@
 # backend
 
+## 0.2.1
+
+### Patch Changes
+
+- chore(55): create custom exception called LeoppleErrorLogger in shared/exceptions/leopple.error.ts
+
 ## 0.2.0
 
 ### Minor Changes
