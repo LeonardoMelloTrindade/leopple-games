@@ -1,5 +1,15 @@
 # backend
 
+## 0.2.2
+
+### Patch Changes
+
+- 6ccca96: feat(63): create migration 1773758850590-create-table-cities.ts
+- 6ccca96: feat(63): add states.json and cities.json
+- 2b946f8: feat(64): create migration 1773761530891-create-table-users-games.ts
+- fa7c6bd: feat(50): create migration 1773760857257-create-table-users.ts
+- 6ccca96: feat(63); create migration 1773711408915-create-table-states.ts
+
 ## 0.2.1
 
 ### Patch Changes
