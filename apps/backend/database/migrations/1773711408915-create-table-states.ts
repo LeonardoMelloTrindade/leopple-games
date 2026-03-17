@@ -34,7 +34,6 @@ export class CreateTableStates1773711408915 implements MigrationInterface {
     );
 
     for (const state of states) {
-      console.log(states);
       await queryRunner.query(
         `INSERT INTO ${tableName} (uf, name) VALUES ($1, $2)`,
         [state.uf, state.name],
