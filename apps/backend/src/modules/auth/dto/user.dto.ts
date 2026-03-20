@@ -1,4 +1,10 @@
-import { IsEmail, IsNumber, IsString, MinLength } from 'class-validator';
+import {
+  IsEmail,
+  IsNumber,
+  IsOptional,
+  IsString,
+  MinLength,
+} from 'class-validator';
 
 export class UserDto {
   @IsNumber()
@@ -24,5 +30,6 @@ export class UserDto {
   created_at: Date;
 
   @IsString()
-  updated_at: Date;
+  @IsOptional()
+  updated_at: Date | null;
 }
