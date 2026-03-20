@@ -1,1 +1,1 @@
-npx check-types
+npm run check-types

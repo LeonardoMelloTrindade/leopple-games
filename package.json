@@ -41,5 +41,8 @@
   "packageManager": "npm@11.6.2",
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-musl": "4.59.0"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue,svelte,tsx}": "npm run lint-staged"
   }
 }
