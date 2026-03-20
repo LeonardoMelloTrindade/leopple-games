@@ -1,7 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from './users.entity';
+import { LeoppleErrorLogger } from '../../shared/exceptions/leopple.error';
 
 @Injectable()
 export class UsersService {
@@ -11,11 +12,29 @@ export class UsersService {
   ) {}
 
   async findByEmail(email: string): Promise<Users | null> {
-    return this.usersRepository.findOne({ where: { email } });
+    try {
+      return await this.usersRepository.findOne({ where: { email } });
+    } catch (error) {
+      throw new LeoppleErrorLogger({
+        message: 'Erro ao buscar usuário por email.',
+        errorCode: 'DATABASE_CONNECTION_ERROR',
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        details: error instanceof Error ? error.message : String(error),
+      });
+    }
   }
 
   async create(userData: Partial<Users>): Promise<Users> {
-    const user = this.usersRepository.create(userData);
-    return this.usersRepository.save(user);
+    try {
+      const user = this.usersRepository.create(userData);
+      return await this.usersRepository.save(user);
+    } catch (error) {
+      throw new LeoppleErrorLogger({
+        message: 'Erro ao criar usuário.',
+        errorCode: 'DATABASE_CONNECTION_ERROR',
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        details: error instanceof Error ? error.message : String(error),
+      });
+    }
   }
 }
