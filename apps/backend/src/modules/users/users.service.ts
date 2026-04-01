@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from './users.entity';
 import { LeoppleErrorLogger } from '../../shared/exceptions/leopple.error';
-import { LeoppleErrorCode } from 'src/shared/exceptions/leopple.types';
+import { LeoppleErrorCode } from '../../shared/exceptions/leopple.types';
 
 @Injectable()
 export class UsersService {
