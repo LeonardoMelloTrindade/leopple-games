@@ -1,5 +1,11 @@
 # config-screen
 
+## 0.1.4
+
+### Patch Changes
+
+- 89fe774: chore(71): remove command test temporarily in package.json
+
 ## 0.1.3
 
 ### Patch Changes

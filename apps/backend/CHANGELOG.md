@@ -1,5 +1,22 @@
 # backend
 
+## 0.3.0
+
+### Minor Changes
+
+- 9c6bc2c: feat(66): create new module for authentication in auth.controller.ts, auth.module.ts and auth.service.ts
+
+### Patch Changes
+
+- 9c6bc2c: feat(66): create dtos for login.dto.ts, register.dto.ts and user.dto.ts
+- 9c6bc2c: chore(68): add new libs @nestjs/jwt, @nestjs/passport, bcrypt, class-transformer, class-validator and @nestjs/mapped-types
+- 9c6bc2c: chore(66): update path of entities in postgre.provider.ts
+- f4601ff: test(69): create unit tests for users module in users.service.spec.ts
+- 9c6bc2c: feat(68): create module users.module.ts, users.service.ts, users.controller.ts and users.entity.ts
+- 149c268: docs(60): add swagger for documentation api, add in user.dto.ts and auth.service.ts
+- f4601ff: test(69): create unit tests for auth in auth.controller.spec.ts and auth.service.spec.ts
+- f4601ff: test(69): create mocks in shared/mocks in auth.mock.ts and repository.mock.ts
+
 ## 0.2.2
 
 ### Patch Changes
