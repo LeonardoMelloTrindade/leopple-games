@@ -76,21 +76,27 @@ describe('AuthService', () => {
       expect(result).toBeUndefined();
     });
 
-    it('deve retornar null se o usuário não for encontrado', async () => {
+    it('deve atirar UnauthorizedException se o usuário não for encontrado', async () => {
       (usersService.findByEmail as jest.Mock).mockResolvedValue(null);
 
-      const result = await service.validateUser('notfound@test.com', '123456');
+      await expect(
+        service.validateUser('notfound@test.com', '123456'),
+      ).rejects.toThrow(UnauthorizedException);
 
-      expect(result).toBeNull();
       expect(bcrypt.compare).not.toHaveBeenCalled();
     });
   });
 
   describe('login', () => {
     it('deve retornar um token JWT válido', async () => {
+      (usersService.findByEmail as jest.Mock).mockResolvedValue(mockUser);
+      (bcrypt.compare as jest.Mock).mockResolvedValue(true);
       (jwtService.sign as jest.Mock).mockReturnValue('mock_token');
 
-      const result = await service.login(mockUser);
+      const result = await service.login({
+        email: mockUser.email,
+        password: 'password123',
+      });
 
       expect(jwtService.sign).toHaveBeenCalledWith({
         email: mockUser.email,

@@ -17,14 +17,14 @@ export class Users {
   @Column()
   last_name: string;
 
-  @Column({ nullable: true })
-  avatar: string;
+  @Column({ nullable: true, type: 'varchar' })
+  avatar: string | null;
 
   @Column()
   email: string;
 
   @Column()
-  password: string; // ADICIONAR como opcional via migration
+  password: string;
 
   @Column()
   city_id: number;
@@ -33,5 +33,5 @@ export class Users {
   created_at: Date;
 
   @UpdateDateColumn({ nullable: true })
-  updated_at: Date;
+  updated_at: Date | null;
 }

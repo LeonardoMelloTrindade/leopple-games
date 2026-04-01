@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Users } from './users.entity';
 import { LeoppleErrorLogger } from '../../shared/exceptions/leopple.error';
+import { LeoppleErrorCode } from '../../shared/exceptions/leopple.types';
 
 @Injectable()
 export class UsersService {
@@ -17,7 +18,7 @@ export class UsersService {
     } catch (error) {
       throw new LeoppleErrorLogger({
         message: 'Erro ao buscar usuário por email.',
-        errorCode: 'DATABASE_CONNECTION_ERROR',
+        errorCode: LeoppleErrorCode.DATABASE_CONNECTION_ERROR,
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
         details: error instanceof Error ? error.message : String(error),
       });
@@ -31,7 +32,7 @@ export class UsersService {
     } catch (error) {
       throw new LeoppleErrorLogger({
         message: 'Erro ao criar usuário.',
-        errorCode: 'DATABASE_CONNECTION_ERROR',
+        errorCode: LeoppleErrorCode.DATABASE_CONNECTION_ERROR,
         statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
         details: error instanceof Error ? error.message : String(error),
       });
