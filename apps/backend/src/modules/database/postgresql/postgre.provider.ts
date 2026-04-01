@@ -11,7 +11,7 @@ export const PostgreProvider = TypeOrmModule.forRootAsync({
     username,
     password,
     database,
-    entities: [__dirname + '/**/*.entity{.ts,.js}'],
+    entities: [__dirname + '/../../../**/*.entity{.ts,.js}'],
     migrations: [__dirname + '../../../database/migrations/*{.ts,.js}'],
     synchronize: true,
   }),

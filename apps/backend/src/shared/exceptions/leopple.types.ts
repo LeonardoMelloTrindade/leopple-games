@@ -6,11 +6,12 @@ import { HttpStatus } from '@nestjs/common';
  * EXTERNAL_API_ERROR: Erro ao consumir API externa
  * VALIDATION_FAILED: Dados com formatação fora do padrão permitido do back-end
  */
-type LeoppleErrorCode =
-  | 'DATABASE_CONNECTION_ERROR'
-  | 'RECORD_NOT_FOUND'
-  | 'EXTERNAL_API_ERROR'
-  | 'VALIDATION_FAILED';
+export enum LeoppleErrorCode {
+  DATABASE_CONNECTION_ERROR = 'DATABASE_CONNECTION_ERROR',
+  RECORD_NOT_FOUND = 'RECORD_NOT_FOUND',
+  EXTERNAL_API_ERROR = 'EXTERNAL_API_ERROR',
+  VALIDATION_FAILED = 'VALIDATION_FAILED',
+}
 
 interface LeoppleErrorType {
   message: string;
@@ -19,4 +20,4 @@ interface LeoppleErrorType {
   details: string | null;
 }
 
-export type { LeoppleErrorCode, LeoppleErrorType };
+export type { LeoppleErrorType };
