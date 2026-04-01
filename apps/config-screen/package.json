@@ -1,6 +1,6 @@
 {
   "name": "config-screen",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,7 +9,6 @@
     "dev": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
     "lint": "eslint . --fix",
     "docker:dev": "docker compose -f ../../docker-compose.dev.yml up configuration-screen"
   },
