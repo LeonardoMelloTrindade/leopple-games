@@ -1,6 +1,6 @@
 {
   "name": "@leopple-games/typescript",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Typescript configuration for Leopple Games",
   "private": true,
   "publishConfig": {
