@@ -1,4 +1,5 @@
 import type { Component } from 'solid-js';
+import '@leopple-games/styles/normalize';
 
 const App: Component = () => {
   return (
