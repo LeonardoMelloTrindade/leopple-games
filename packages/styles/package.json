@@ -4,6 +4,10 @@
   "private": "true",
   "description": "Universal styles for front-ends",
   "exports": {
-    "./normalize": "./normalize.css"
+    "./normalize": "./normalize.css",
+    "./scss/global": "./scss/global.scss"
+  },
+  "devDependencies": {
+    "sass": "1.97.3"
   }
 }
