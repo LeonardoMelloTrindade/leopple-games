@@ -1,2 +1,2 @@
-@use 'themes/light/variables';
-@use 'themes/dark/variables';
+@forward 'themes/light/variables';
+@forward 'themes/dark/variables';

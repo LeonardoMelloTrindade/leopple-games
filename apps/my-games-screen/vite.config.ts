@@ -21,4 +21,11 @@ export default defineConfig({
       },
     ],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use '@leopple-games/styles/scss/global' as *;`,
+      },
+    },
+  },
 });
