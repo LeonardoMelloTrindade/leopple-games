@@ -1,5 +1,24 @@
 # config-screen
 
+## 0.2.0
+
+### Minor Changes
+
+- 8517ae6: style(49): add normalize for packages/normalize.css
+
+### Patch Changes
+
+- 25d977e: chore(7): add config for scss in angular.json
+- b7d4210: style(16): add bootstrap for angular in apps/config-screen
+- Updated dependencies [bcf8d0c]
+- Updated dependencies [390ac7e]
+- Updated dependencies [54dda20]
+- Updated dependencies [f678ce3]
+- Updated dependencies [54dda20]
+- Updated dependencies [390ac7e]
+- Updated dependencies [8517ae6]
+  - @leopple-games/styles@0.1.0
+
 ## 0.1.4
 
 ### Patch Changes
