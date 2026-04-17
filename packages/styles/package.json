@@ -7,13 +7,15 @@
     "./normalize": "./normalize.css",
     "./scss/*.scss": "./scss/*.scss",
     "./scss/*": "./scss/*.scss",
-    "./bootstrap/vue-bootstrap": "./bootstrap/vue-bootstrap.ts"
+    "./bootstrap/vue-bootstrap": "./bootstrap/vue-bootstrap.ts",
+    "./bootstrap/react-bootstrap": "./bootstrap/react-bootstrap.ts"
   },
   "devDependencies": {
     "sass": "1.97.3"
   },
   "dependencies": {
     "bootstrap": "5.3.8",
-    "bootstrap-vue-next": "0.44.3"
+    "bootstrap-vue-next": "0.44.3",
+    "react-bootstrap": "2.10.10"
   }
 }
