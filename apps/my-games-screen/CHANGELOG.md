@@ -1,5 +1,24 @@
 # my-games-screen
 
+## 0.2.0
+
+### Minor Changes
+
+- 8517ae6: style(49): add normalize for packages/normalize.css
+
+### Patch Changes
+
+- 390ac7e: style(18): add @sveltestrap/sveltestrap in packages and import in apps/my-games-screen
+- 25d977e: chore(7): add config for scss in vite.config.ts
+- Updated dependencies [bcf8d0c]
+- Updated dependencies [390ac7e]
+- Updated dependencies [54dda20]
+- Updated dependencies [f678ce3]
+- Updated dependencies [54dda20]
+- Updated dependencies [390ac7e]
+- Updated dependencies [8517ae6]
+  - @leopple-games/styles@0.1.0
+
 ## 0.1.4
 
 ### Patch Changes
