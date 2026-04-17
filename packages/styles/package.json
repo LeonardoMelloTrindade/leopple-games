@@ -6,9 +6,14 @@
   "exports": {
     "./normalize": "./normalize.css",
     "./scss/*.scss": "./scss/*.scss",
-    "./scss/*": "./scss/*.scss"
+    "./scss/*": "./scss/*.scss",
+    "./bootstrap/vue-bootstrap": "./bootstrap/vue-bootstrap.ts"
   },
   "devDependencies": {
     "sass": "1.97.3"
+  },
+  "dependencies": {
+    "bootstrap": "5.3.8",
+    "bootstrap-vue-next": "0.44.3"
   }
 }
