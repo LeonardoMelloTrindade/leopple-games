@@ -1,7 +1,7 @@
 {
   "name": "my-games-screen",
   "private": true,
-  "version": "0.1.4",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
@@ -26,5 +26,8 @@
     "typescript": "5.9.3",
     "vite": "7.3.1",
     "vitest": "4.0.18"
+  },
+  "dependencies": {
+    "@leopple-games/styles": "*"
   }
 }

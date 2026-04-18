@@ -8,4 +8,13 @@ export default defineConfig({
     host: true,
   },
   plugins: [react() as PluginOption],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @use '@leopple-games/styles/scss/global' as *;
+        `,
+      },
+    },
+  },
 });

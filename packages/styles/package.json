@@ -1,0 +1,25 @@
+{
+  "name": "@leopple-games/styles",
+  "version": "0.1.0",
+  "private": "true",
+  "description": "Universal styles for front-ends",
+  "exports": {
+    "./normalize": "./normalize.css",
+    "./scss/*.scss": "./scss/*.scss",
+    "./scss/*": "./scss/*.scss",
+    "./bootstrap/vue-bootstrap": "./bootstrap/vue-bootstrap.ts",
+    "./bootstrap/react-bootstrap": "./bootstrap/react-bootstrap.ts",
+    "./bootstrap/solid-bootstrap": "./bootstrap/solid-bootstrap.ts",
+    "./bootstrap/svelte-bootstrap": "./bootstrap/svelte-bootstrap.ts"
+  },
+  "devDependencies": {
+    "sass": "1.97.3"
+  },
+  "dependencies": {
+    "@sveltestrap/sveltestrap": "^7.1.0",
+    "bootstrap": "5.3.8",
+    "bootstrap-vue-next": "0.44.3",
+    "react-bootstrap": "2.10.10",
+    "solid-bootstrap": "1.0.21"
+  }
+}

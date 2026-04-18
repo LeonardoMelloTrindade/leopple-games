@@ -1,6 +1,6 @@
 {
   "name": "details-game-screen",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "",
   "type": "module",
   "scripts": {
@@ -21,6 +21,7 @@
     "vite-plugin-solid": "2.11.8"
   },
   "dependencies": {
-    "solid-js": "1.9.5"
+    "solid-js": "1.9.5",
+    "@leopple-games/styles": "*"
   }
 }
