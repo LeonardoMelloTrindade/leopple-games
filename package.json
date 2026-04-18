@@ -14,6 +14,7 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "prepare": "husky",
+    "commit": "git cz",
     "docker:dev": "turbo run docker:dev",
     "docker:dev:all": "docker compose -f docker-compose.dev.yml up",
     "docker:dev:down": "docker compose -f docker-compose.dev.yml down",
@@ -25,6 +26,8 @@
     "@changesets/cli": "2.30.0",
     "@commitlint/cli": "20.4.3",
     "@commitlint/config-conventional": "20.4.3",
+    "commitizen": "4.3.1",
+    "cz-conventional-changelog": "3.3.0",
     "husky": "9.1.7",
     "lint-staged": "^16.4.0",
     "prettier": "3.5.3",
@@ -41,5 +44,10 @@
   "packageManager": "npm@11.6.2",
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-musl": "4.59.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
