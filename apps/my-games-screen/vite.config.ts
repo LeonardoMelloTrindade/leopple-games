@@ -7,6 +7,9 @@ export default defineConfig({
     host: true,
   },
   plugins: [sveltekit()],
+  ssr: {
+    noExternal: ['@sveltestrap/sveltestrap', '@leopple-games/styles'],
+  },
   test: {
     expect: { requireAssertions: true },
     projects: [
@@ -20,5 +23,12 @@ export default defineConfig({
         },
       },
     ],
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use '@leopple-games/styles/scss/global' as *;`,
+      },
+    },
   },
 });
