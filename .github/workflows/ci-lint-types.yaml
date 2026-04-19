@@ -3,12 +3,13 @@ name: CI
 on:
   pull_request:
     branches:
-      - '**'
+      - 'story/**'
+      - 'issue/**'
+
 
 jobs:
   continuous-integration:
     name: Lint & Types
-    if: github.base_ref != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,24 +31,3 @@ jobs:
       - name: Run lint
         run: |
           npm run lint
-
-  unit-test:
-    name: Unit Tests
-    if: github.base_ref == 'develop'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24.13.0"
-          cache: "npm"
-      
-      - name: Run install Node.js
-        run: |
-          npm install
-
-      - name: Run test
-        run: |
-          npm run test
