@@ -12,7 +12,7 @@ This workflow automates the creation of Pull Requests. Strictly follow the steps
 
 2. **Commit Changes:**
    - Execute `source ~/.nvm/nvm.sh && nvm use 24.13.0` to ensure the correct Node version for pre-commit hooks.
-   - Run `git commit -m "<TYPE> (<ID>): <short description>"` to commit the changes.
+   - Run `git commit -m "<TYPE> (<ID>): <short description>"` to commit the changes. Example: `chore(33): add lib aws s3 client and s3-ninja in docker compose` 
 
 3. **Push Branch:**
    - Get the current branch name using the appropriate git commands.

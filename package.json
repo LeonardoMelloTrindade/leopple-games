@@ -20,6 +20,7 @@
     "docker:dev:down": "docker compose -f docker-compose.dev.yml down",
     "docker:dev:build": "docker compose -f docker-compose.dev.yml build",
     "docker:db": "docker compose -f docker-compose.dev.yml up postgresql redis",
+    "docker:service": "docker compose -f docker-compose.dev.yml up s3ninja",
     "docker:db:down": "docker compose -f docker-compose.dev.yml down postgresql redis"
   },
   "devDependencies": {
