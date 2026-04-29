@@ -37,6 +37,7 @@ export class AuthService {
   }
 
   async validateUser(email: string, pass: string) {
+    console.log('validateUser', email, pass);
     const user = await this.usersService.findByEmail(email);
     if (!user || !user.password) {
       throw new UnauthorizedException('Credenciais inválidas');
