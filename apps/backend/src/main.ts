@@ -6,10 +6,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Leopple Games APU')
+    .setTitle('Leopple Games API')
     .setDescription('Leopple Games backend documentation.')
     .setVersion('1.0')
-    .addTag('leopple-games')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

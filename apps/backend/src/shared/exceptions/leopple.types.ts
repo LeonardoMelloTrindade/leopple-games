@@ -17,7 +17,7 @@ interface LeoppleErrorType {
   message: string;
   errorCode: LeoppleErrorCode;
   statusCode: HttpStatus;
-  details: string | null;
+  details: string | object | null;
 }
 
 export type { LeoppleErrorType };

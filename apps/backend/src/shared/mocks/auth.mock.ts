@@ -1,6 +1,6 @@
-import { UserDto, RegisterDto } from '../../modules/auth/dto';
+import { RegisterDto } from '../../modules/auth/dto';
 
-const mockUser: UserDto = {
+const mockUser = {
   id: 1,
   email: 'test@user.com',
   password: 'hashedpassword',
