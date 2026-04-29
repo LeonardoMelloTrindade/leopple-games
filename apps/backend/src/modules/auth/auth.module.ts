@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 import { UsersModule } from '../users/users.module';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { ParseAuthPipe } from '../../shared/pipes/validate.pipe';
+import { ValidatePipe } from '../../shared/pipes/validate.pipe';
 
 @Module({
   imports: [
@@ -19,6 +19,6 @@ import { ParseAuthPipe } from '../../shared/pipes/validate.pipe';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy, ParseAuthPipe],
+  providers: [AuthService, LocalStrategy, JwtStrategy, ValidatePipe],
 })
 export class AuthModule {}
