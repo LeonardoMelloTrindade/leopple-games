@@ -127,7 +127,9 @@ describe('AuthService', () => {
         ...registerDto,
         password: 'hashed_new_password',
       });
-      expect(result).toEqual({ access_token: 'new_jwt_token' });
+      expect(result).toEqual({
+        message: 'Your account has been successfully registered.',
+      });
     });
 
     it('deve atirar UnauthorizedException se o email já estiver cadastrado', async () => {

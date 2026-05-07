@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { S3Service } from './s3.service';
-import { ValidatePipe } from 'src/shared/pipes/validate.pipe';
+import { ValidatePipe } from '../../shared/pipes/validate.pipe';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { UploadDto, ManageFileS3Dto } from './dto';
 

@@ -6,8 +6,8 @@ import {
 } from '@nestjs/common';
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
-import { LeoppleErrorLogger } from 'src/shared/exceptions/leopple.error';
-import { LeoppleErrorCode } from 'src/shared/exceptions/leopple.types';
+import { LeoppleErrorLogger } from '../../shared/exceptions/leopple.error';
+import { LeoppleErrorCode } from '../../shared/exceptions/leopple.types';
 
 @Injectable()
 export class ValidatePipe implements PipeTransform {
