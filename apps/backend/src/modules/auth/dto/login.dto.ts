@@ -30,20 +30,20 @@ export class LoginDto {
     Maximum 70 characters \n
     At least 1 uppercase letter \n
     At least 1 number \n
-    At least 1 symbol: $ * & @ # \n
+    At least 1 symbol: $ * & @ # % \n
     do not allow repeated consecutive characters (aa, bb, 44, etc.)
 `,
-    example: 'cr7%my$goat2026',
+    example: 'CR7%my$goat2026',
   })
   @IsString()
   @IsNotEmpty()
   @MinLength(8)
   @MaxLength(70)
   @Matches(
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])(?:([0-9a-zA-Z$*&@#])(?!\1)){8,}$/i,
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#%])(?:([0-9a-zA-Z$*&@#%])(?!\1)){8,}$/,
     {
       message:
-        'password must have at least 1 uppercase, 1 number, 1 symbol ($*&@#), and no consecutive repeated characters',
+        'password must have at least 1 uppercase, 1 number, 1 symbol ($*&@#%), and no consecutive repeated characters',
     },
   )
   password: string;

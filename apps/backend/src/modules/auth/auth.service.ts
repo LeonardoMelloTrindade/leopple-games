@@ -33,11 +33,12 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    return this.getAccessToken(email, id);
+    return {
+      message: 'Your account has been successfully registered.',
+    };
   }
 
   async validateUser(email: string, pass: string) {
-    console.log('validateUser', email, pass);
     const user = await this.usersService.findByEmail(email);
     if (!user || !user.password) {
       throw new UnauthorizedException('Credenciais inválidas');
