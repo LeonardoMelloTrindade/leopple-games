@@ -20,7 +20,7 @@ export class ManageFileS3Dto {
 
   @ApiProperty({
     description: `
-    Rules\n:
+    Rules:\n
     The bucket is the user's email address\n
     Minimum 15 characters\n
     Maximum 70 characters`,
