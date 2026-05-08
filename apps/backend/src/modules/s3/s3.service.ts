@@ -1,16 +1,27 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import {
+  S3Client,
+  PutObjectCommand,
+  GetObjectCommand,
+  DeleteObjectCommand,
+} from '@aws-sdk/client-s3';
+import { Readable } from 'stream';
 import { s3Envs } from '../../config/envs/env.config';
 import { LeoppleErrorLogger } from '../../shared/exceptions/leopple.error';
 import { LeoppleErrorCode } from '../../shared/exceptions/leopple.types';
-import { UploadDto } from './dto';
+import { ManageFileS3Dto, UploadDto } from './dto';
 
 @Injectable()
 export class S3Service {
   private s3Client: S3Client;
 
   constructor() {
-    const { s3_region, s3_url, s3_access_key, s3_secret_key } = s3Envs;
+    const {
+      s3_region,
+      s3Url: s3_url,
+      s3AccessKey: s3_access_key,
+      s3Secretey: s3_secret_key,
+    } = s3Envs;
 
     this.s3Client = new S3Client({
       region: s3_region,
@@ -23,7 +34,7 @@ export class S3Service {
     });
   }
 
-  async uploadImage({
+  async uploadFile({
     fileBase64,
     keyImage,
     id,
@@ -54,6 +65,57 @@ export class S3Service {
     }
   }
 
+  async downloadFile({ id, firstName, lastName, keyImage }: ManageFileS3Dto) {
+    try {
+      const command = new GetObjectCommand({
+        Bucket: this.buildBucketName(id, firstName, lastName),
+        Key: keyImage,
+      });
+
+      const response = await this.s3Client.send(command);
+
+      const stream = response.Body as Readable;
+      const mime = response.ContentType;
+      const buffer: Buffer = await this.streamToBuffer(stream);
+      const base64String = buffer.toString('base64');
+
+      return {
+        data: `data:${mime};base64,${base64String}`,
+      };
+    } catch (error) {
+      throw new LeoppleErrorLogger({
+        message: 'Erro ao buscar o arquivo no S3.',
+        errorCode: LeoppleErrorCode.FILE_STORAGE_ERROR,
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        details: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+
+  async removeFile({ id, firstName, lastName, keyImage }: ManageFileS3Dto) {
+    try {
+      const command = new DeleteObjectCommand({
+        Bucket: this.buildBucketName(id, firstName, lastName),
+        Key: keyImage,
+      });
+
+      const response = await this.s3Client.send(command);
+      console.log(response);
+
+      return {
+        code: response.$metadata.httpStatusCode,
+        message: 'Arquivo deletado com sucesso',
+      };
+    } catch (error) {
+      throw new LeoppleErrorLogger({
+        message: 'Erro ao deletar o arquivo no S3.',
+        errorCode: LeoppleErrorCode.FILE_STORAGE_ERROR,
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        details: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+
   private getMimeFile(fileBase64: string): string {
     const begin = fileBase64.indexOf('data:') + 5;
     const end = fileBase64.indexOf(';');
@@ -74,5 +136,14 @@ export class S3Service {
     lastName: string,
   ): string {
     return `${String(id)}-${firstName.toLowerCase()}-${lastName.toLowerCase()}`;
+  }
+
+  private async streamToBuffer(stream: Readable): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+      const chunks: Buffer[] = [];
+      stream.on('data', (chunk: Buffer) => chunks.push(chunk));
+      stream.on('error', reject);
+      stream.on('end', () => resolve(Buffer.concat(chunks)));
+    });
   }
 }

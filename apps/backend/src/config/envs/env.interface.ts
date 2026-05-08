@@ -13,10 +13,10 @@ interface IRedisEnv {
 }
 
 interface IS3Env {
-  s3_url: string;
+  s3Url: string;
   s3_region: string;
-  s3_access_key: string;
-  s3_secret_key: string;
+  s3AccessKey: string;
+  s3Secretey: string;
 }
 
 export { type IPostgreSqlEnv, type IRedisEnv, type IS3Env };

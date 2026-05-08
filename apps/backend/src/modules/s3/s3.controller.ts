@@ -22,16 +22,16 @@ export class S3Controller {
 
   @Post()
   async uploadFile(@Body() payload: UploadDto) {
-    return await this.s3Service.uploadImage(payload);
+    return await this.s3Service.uploadFile(payload);
   }
 
   @Get()
   async downloadFile(@Body() payload: ManageFileS3Dto) {
-    return payload;
+    return await this.s3Service.downloadFile(payload);
   }
 
   @Delete()
   async removeFile(@Body() payload: ManageFileS3Dto) {
-    return payload;
+    return await this.s3Service.removeFile(payload);
   }
 }
