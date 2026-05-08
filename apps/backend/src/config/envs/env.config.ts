@@ -16,7 +16,10 @@ const redisEnv: IRedisEnv = {
 };
 
 const s3Envs: IS3Env = {
-  s3_url: process.env.S3_URL || 'http://localhost:9444/',
+  s3_url: process.env.S3_URL || 'http://localhost:9444',
+  s3_region: process.env.S3_REGION || 'us-east-1',
+  s3_access_key: process.env.S3_ACCESS_KEY || 'your-access-key',
+  s3_secret_key: process.env.S3_SECRET_KEY || 'your-secret-key',
 };
 
 export { postgreSqlEnv, redisEnv, s3Envs };

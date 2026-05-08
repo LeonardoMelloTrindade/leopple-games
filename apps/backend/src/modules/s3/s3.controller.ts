@@ -22,7 +22,7 @@ export class S3Controller {
 
   @Post()
   async uploadFile(@Body() payload: UploadDto) {
-    return payload;
+    return await this.s3Service.uploadImage(payload);
   }
 
   @Get()
