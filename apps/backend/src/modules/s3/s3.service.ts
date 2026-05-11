@@ -16,19 +16,14 @@ export class S3Service {
   private s3Client: S3Client;
 
   constructor() {
-    const {
-      s3_region,
-      s3Url: s3_url,
-      s3AccessKey: s3_access_key,
-      s3Secretey: s3_secret_key,
-    } = s3Envs;
+    const { s3Region, s3Url, s3AccessKey, s3Secretey } = s3Envs;
 
     this.s3Client = new S3Client({
-      region: s3_region,
-      endpoint: s3_url,
+      region: s3Region,
+      endpoint: s3Url,
       credentials: {
-        accessKeyId: s3_access_key,
-        secretAccessKey: s3_secret_key,
+        accessKeyId: s3AccessKey,
+        secretAccessKey: s3Secretey,
       },
       forcePathStyle: true,
     });
@@ -49,11 +44,11 @@ export class S3Service {
         ContentType: this.getMimeFile(fileBase64),
       });
 
-      await this.s3Client.send(command);
+      const response = await this.s3Client.send(command);
 
       return {
         message: 'Upload concluído com sucesso!',
-        fileKey: keyImage,
+        code: response.$metadata.httpStatusCode,
       };
     } catch (error) {
       throw new LeoppleErrorLogger({
@@ -80,6 +75,7 @@ export class S3Service {
       const base64String = buffer.toString('base64');
 
       return {
+        code: response.$metadata.httpStatusCode,
         data: `data:${mime};base64,${base64String}`,
       };
     } catch (error) {
@@ -100,7 +96,6 @@ export class S3Service {
       });
 
       const response = await this.s3Client.send(command);
-      console.log(response);
 
       return {
         code: response.$metadata.httpStatusCode,

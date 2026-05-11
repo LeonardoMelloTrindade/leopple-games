@@ -14,7 +14,7 @@ interface IRedisEnv {
 
 interface IS3Env {
   s3Url: string;
-  s3_region: string;
+  s3Region: string;
   s3AccessKey: string;
   s3Secretey: string;
 }
