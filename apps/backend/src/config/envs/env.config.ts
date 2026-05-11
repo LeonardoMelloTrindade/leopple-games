@@ -17,7 +17,7 @@ const redisEnv: IRedisEnv = {
 
 const s3Envs: IS3Env = {
   s3Url: process.env.S3_URL || 'http://localhost:9444',
-  s3_region: process.env.S3_REGION || 'us-east-1',
+  s3Region: process.env.S3_REGION || 'us-east-1',
   s3AccessKey: process.env.S3_ACCESS_KEY || 'your-access-key',
   s3Secretey: process.env.S3_SECRET_KEY || 'your-secret-key',
 };
