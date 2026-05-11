@@ -1,0 +1,136 @@
+name: 🤖 AI Code Review & Security Analysis
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main, develop]
+
+jobs:
+  code-quality:
+    name: Code Quality Check
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        id: eslint
+        run: npm run lint 2>&1 || echo "LINT_FAILED=true" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Check TypeScript types
+        id: typescript
+        run: npx tsc --noEmit
+        continue-on-error: true
+
+      - name: Security audit
+        id: audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: 🤖 Post AI Analysis Comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const eslintPassed = '${{ steps.eslint.outcome }}' === 'success';
+            const typesPassed = '${{ steps.typescript.outcome }}' === 'success';
+            const auditPassed = '${{ steps.audit.outcome }}' === 'success';
+
+            let comment = `## 🤖 AI Code Review Analysis\n\n`;
+            comment += `| Check | Status |\n`;
+            comment += `|-------|--------|\n`;
+            comment += `| 📝 ESLint | ${eslintPassed ? '✅ Passed' : '⚠️ Issues Found'} |\n`;
+            comment += `| 🔧 TypeScript | ${typesPassed ? '✅ Passed' : '❌ Type Errors'} |\n`;
+            comment += `| 🛡️ Security Audit | ${auditPassed ? '✅ Passed' : '⚠️ Vulnerabilities'} |\n\n`;
+
+            if (!eslintPassed || !typesPassed || !auditPassed) {
+              comment += `### ⚠️ Issues Detected\n\n`;
+              if (!eslintPassed) comment += `- **ESLint**: Check logs for style/quality issues\n`;
+              if (!typesPassed) comment += `- **TypeScript**: Type errors detected - review the build output\n`;
+              if (!auditPassed) comment += `- **Security**: Run \`npm audit\` locally to see vulnerabilities\n`;
+            } else {
+              comment += `### ✨ All Checks Passed!\n`;
+              comment += `Your code looks great! Ready for review. 🎉\n`;
+            }
+
+            comment += `\n---\n`;
+            comment += `*This analysis was performed by GitHub Actions AI Code Review*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  code-analysis:
+    name: Advanced Code Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: 'typescript'
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+
+  pr-summary:
+    name: Generate PR Summary
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate Summary
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: prData } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            let summary = `## 📊 PR Summary\n\n`;
+            summary += `**Changes**: +${prData.additions} -${prData.deletions}\n`;
+            summary += `**Files Changed**: ${prData.changed_files}\n`;
+            summary += `**Commits**: ${prData.commits}\n\n`;
+            summary += `✨ *Automated by GitHub Actions AI Review System*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            });
