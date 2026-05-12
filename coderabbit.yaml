@@ -1,7 +1,7 @@
 reviews:
   enabled: true
   auto_review_on_small_pull_requests: true
-  labeling_instructions: true
+  labeling_instructions: []
   auto_review:
     enabled: true
     drafts: false
