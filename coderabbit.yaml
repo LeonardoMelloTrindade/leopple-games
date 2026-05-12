@@ -1,0 +1,26 @@
+review:
+  enabled: true
+  auto_review: true
+  auto_review_on_small_pull_requests: true
+  use_label_hints: true
+
+max_files: 10
+max_lines_per_file: 500
+
+# rules:
+#   - name: "Review PRs from story branches"
+#     patterns:
+#       source_branch: "*/story/*"
+#     enabled: true
+    
+#   - name: "Review PRs from issue branches"
+#     patterns:
+#       source_branch: "*/issue/*"
+#     enabled: true
+
+chat:
+  enabled: true
+
+default:
+  review:
+    enabled: true
