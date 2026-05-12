@@ -1,8 +1,10 @@
-review:
+reviews:
   enabled: true
-  auto_review: true
   auto_review_on_small_pull_requests: true
-  use_label_hints: true
+  labeling_instructions: true
+  auto_review:
+    enabled: true
+    drafts: false
 
 max_files: 10
 max_lines_per_file: 500
@@ -20,6 +22,7 @@ rules:
 
 chat:
   enabled: true
+  auto_reply: true
 
 default:
   review:
