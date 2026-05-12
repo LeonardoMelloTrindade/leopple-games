@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+reviews:
+  high_level_summary: true
+  high_level_summary_placeholder: "@coderabbitai summary"
+  high_level_summary_instructions: |
+    Gere uma descricao curta em portugues do Brasil sobre as alteracoes do PR.
+    Explique o que mudou.
+    Evite repetir detalhes obvios de arquivos.
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "^story/.*"
+      - "^issue/.*"
+
+chat:
+  auto_reply: true
