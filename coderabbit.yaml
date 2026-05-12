@@ -12,12 +12,12 @@ max_lines_per_file: 500
 rules:
   - name: "Review PRs from story branches"
     patterns:
-      source_branch: "*/story/*"
+      target_branch: "story/*"
     enabled: true
     
   - name: "Review PRs from issue branches"
     patterns:
-      source_branch: "*/issue/*"
+      target_branch: "issue/*"
     enabled: true
 
 chat:
