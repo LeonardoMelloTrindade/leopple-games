@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsDataURI, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsValidImage } from '../../../shared/decorators/index';
 
 export class UploadDto {
   @ApiProperty({
@@ -46,5 +47,6 @@ export class UploadDto {
   })
   @IsNotEmpty()
   @IsDataURI()
+  @IsValidImage()
   fileBase64: string;
 }
