@@ -51,13 +51,15 @@ describe('AuthController', () => {
   describe('register', () => {
     it('deve repassar o DTO de registro para o serviço AuthService', async () => {
       (authService.register as jest.Mock).mockResolvedValue({
-        access_token: 'valid_token',
+        message: 'Your account has been successfully registered.',
       });
 
       const result = await controller.register(registerDto);
 
       expect(authService.register).toHaveBeenCalledWith(registerDto);
-      expect(result).toEqual({ access_token: 'valid_token' });
+      expect(result).toEqual({
+        message: 'Your account has been successfully registered.',
+      });
     });
   });
 });

@@ -33,7 +33,9 @@ export class AuthService {
       password: hashedPassword,
     });
 
-    return this.getAccessToken(email, id);
+    return {
+      message: 'Your account has been successfully registered.',
+    };
   }
 
   async validateUser(email: string, pass: string) {

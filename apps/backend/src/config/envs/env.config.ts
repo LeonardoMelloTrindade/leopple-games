@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { IPostgreSqlEnv, IRedisEnv } from './env.interface';
+import { IPostgreSqlEnv, IRedisEnv, IS3Env } from './env.interface';
 
 const postgreSqlEnv: IPostgreSqlEnv = {
   host: process.env.POSTGRESQL_HOST || '',
@@ -15,4 +15,11 @@ const redisEnv: IRedisEnv = {
   password: process.env.REDIS_PASSWORD || '',
 };
 
-export { postgreSqlEnv, redisEnv };
+const s3Envs: IS3Env = {
+  s3Url: process.env.S3_URL || 'http://localhost:9444',
+  s3Region: process.env.S3_REGION || 'us-east-1',
+  s3AccessKey: process.env.S3_ACCESS_KEY || 'your-access-key',
+  s3Secretey: process.env.S3_SECRET_KEY || 'your-secret-key',
+};
+
+export { postgreSqlEnv, redisEnv, s3Envs };

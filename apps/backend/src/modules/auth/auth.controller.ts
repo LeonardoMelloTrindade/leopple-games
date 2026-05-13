@@ -5,15 +5,17 @@ import {
   Request,
   Get,
   Body,
+  UsePipes,
 } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
+import { LoginDto, RegisterDto } from './dto';
+import { ValidatePipe } from '../../shared/pipes/validate.pipe';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
-import { RegisterDto } from './dto/register.dto';
-import { LoginDto } from './dto';
-import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('auth')
 @Controller('auth')
+@UsePipes(ValidatePipe)
 export class AuthController {
   constructor(private authService: AuthService) {}
 
@@ -28,6 +30,7 @@ export class AuthController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Get('profile')
   getProfile(@Request() req) {
     // Return first_name, last_name, email, created_at and updated-at
