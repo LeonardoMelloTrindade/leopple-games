@@ -1,5 +1,36 @@
 # backend
 
+## 0.4.0
+
+### Minor Changes
+
+- fc45cc9: feat(74): add decorator IsValidImage in fileBase64 in upload.dto.ts
+- 6b5a573: feat(37): create routes crud for s3 in s3.controller.ts
+- 8c7ff67: feat(64): create methods in s3.service.ts for download and deletes files
+- 8c7ff67: feat(64): add service methods for s3.controller.ts
+- 60d990e: feat(36): create sintax simple for s3.module.ts, s3.service.ts and s3.controller.ts files for module s3
+- c2f6017: feat(46): add ValidatePipe on login route in auth.controller.ts
+- c2f6017: feat(46): create pipe ValidatePipe in shared/pipes/validate.pipes.ts
+- 63929d8: feat(39): create methods assists and for upload file in s3 en s3.service.ts
+
+### Patch Changes
+
+- 60d990e: chore(38): add new env S3_URL em .env.example and env.config.ts
+- fc45cc9: feat(74): create decorator for dto to upload in s3 is-valid-file-image.decorator.ts
+- 63929d8: chore(39): create type error for s3 in leopple.types.ts
+- 63929d8: chore(63): update upload.dto.ts with news fields for generate bucket with id, firstName and lastName
+- e36f9a8: chore(33): add lib @aws-sdk/client-s3 in package.json for module s3
+- 2484ae7: test(55): create unit test s3.service.spec.ts
+- c2f6017: chore(46): remove User.dto.ts because Omitype from swagger is incompatible with class-validator and pipes
+- 62cc8a8: feat(52): add authorization in swagger doc in main.ts
+- 6b5a573: feat(47): create dto for controller upload.dto.ts and manageFileS3.ts
+- 62cc8a8: fix(52): fix regex in password validation in login.dto.ts and register.dto.ts
+- 2484ae7: test(55): create mock for tests in s3.service.spec.ts called s3.mock.ts
+- 62cc8a8: fix(52): add validation guards in controller auth profile in auth.controller.ts
+- 8c7ff67: chore(64): update manageFileS3.dto.ts with news fields for create bucket with id, firstName and lastName
+- c2f6017: feat(46): add news attributtes in Login.dto.ts and Register.dto.ts
+- fc45cc9: chore(74): create constant with image types in mime-types.constant.ts
+
 ## 0.3.0
 
 ### Minor Changes
