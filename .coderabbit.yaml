@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+reviews:
+  high_level_summary: true
+  high_level_summary_placeholder: "@coderabbitai summary"
+  high_level_summary_instructions: |
+    Generate a short pull request description in English.
+    Explain what changed.
+    Avoid repeating obvious file-level details.
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - "^story/.*"
+      - "^issue/.*"
+
+chat:
+  auto_reply: true

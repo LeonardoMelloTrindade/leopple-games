@@ -12,4 +12,11 @@ interface IRedisEnv {
   password: string;
 }
 
-export { type IPostgreSqlEnv, type IRedisEnv };
+interface IS3Env {
+  s3Url: string;
+  s3Region: string;
+  s3AccessKey: string;
+  s3Secretey: string;
+}
+
+export { type IPostgreSqlEnv, type IRedisEnv, type IS3Env };

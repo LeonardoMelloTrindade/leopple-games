@@ -121,6 +121,16 @@ services:
       - polls_redis_data:/data
     networks:
       - leopple-games-network
+  
+  s3ninja:
+    image: scireum/s3-ninja:latest
+    ports:
+      - "9444:9000"
+    volumes:
+      - ./apps/backend/s3data:/home/sirius/data
+    networks:
+      - leopple-games-network
+
 
 volumes:
   polls_pg_data:

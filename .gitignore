@@ -41,3 +41,6 @@ yarn-error.log*
 .svelte-kit
 .svelte
 
+#Media
+s3data
+
