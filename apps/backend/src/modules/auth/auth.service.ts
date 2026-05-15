@@ -58,7 +58,7 @@ export class AuthService {
   }
 
   private stripPassword(user: Users) {
-    const { password, ...rest } = user;
+    const { password, avatar, ...rest } = user;
     return rest;
   }
 
