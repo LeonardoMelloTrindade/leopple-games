@@ -1,8 +1,13 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { UsersService } from '../users/users.service';
 import { RegisterDto, LoginDto } from './dto';
+import { Users } from '../users/users.entity';
 
 @Injectable()
 export class AuthService {
@@ -28,14 +33,18 @@ export class AuthService {
     }
 
     const hashedPassword = await bcrypt.hash(newUser.password, 10);
-    const { id, email } = await this.usersService.create({
-      ...newUser,
-      password: hashedPassword,
-    });
+    await this.usersService.create({ ...newUser, password: hashedPassword });
 
-    return {
-      message: 'Your account has been successfully registered.',
-    };
+    return { message: 'Your account has been successfully registered.' };
+  }
+
+  async getMe(userId: number) {
+    const user = await this.usersService.findById(userId);
+    if (!user) {
+      throw new NotFoundException('Usuário não encontrado.');
+    }
+
+    return this.stripPassword(user);
   }
 
   async validateUser(email: string, pass: string) {
@@ -45,10 +54,12 @@ export class AuthService {
     }
 
     const isMatch = await bcrypt.compare(pass, user.password);
-    if (isMatch) {
-      const { password, ...result } = user;
-      return result;
-    }
+    return isMatch ? this.stripPassword(user) : null;
+  }
+
+  private stripPassword(user: Users) {
+    const { password, ...rest } = user;
+    return rest;
   }
 
   private async getAccessToken(email: string, id: number) {

@@ -12,6 +12,19 @@ export class UsersService {
     private usersRepository: Repository<Users>,
   ) {}
 
+  async findById(id: number): Promise<Users | null> {
+    try {
+      return await this.usersRepository.findOne({ where: { id } });
+    } catch (error) {
+      throw new LeoppleErrorLogger({
+        message: 'Erro ao buscar usuário por id.',
+        errorCode: LeoppleErrorCode.DATABASE_CONNECTION_ERROR,
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        details: error instanceof Error ? error.message : String(error),
+      });
+    }
+  }
+
   async findByEmail(email: string): Promise<Users | null> {
     try {
       return await this.usersRepository.findOne({ where: { email } });

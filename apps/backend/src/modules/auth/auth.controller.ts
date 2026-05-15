@@ -31,9 +31,8 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
-  @Get('profile')
-  getProfile(@Request() req) {
-    // Return first_name, last_name, email, created_at and updated-at
-    return `TODO: ${req}`;
+  @Get('me')
+  getMe(@Request() req: { user: { id: number } }) {
+    return this.authService.getMe(req.user.id);
   }
 }
