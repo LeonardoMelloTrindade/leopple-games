@@ -47,7 +47,7 @@
 
           <div class="social-login">
             <button type="button" class="social-button google">
-              <i class="fa-brands fa-google" />
+              <i class="fa-brands fa-google" aria-label="Entrar com Google" />
             </button>
           </div>
         </form>
@@ -259,10 +259,6 @@
 }
 
 @media (max-width: 480px) {
-  body {
-    padding: 16px;
-  }
-
   .login-content {
     padding: 32px 20px;
   }

@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-## Version Node in project
+## Node Version for Project
 
 `nvm use 24.13.0`
 
