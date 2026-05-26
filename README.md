@@ -1,159 +1,125 @@
-# Turborepo starter
+# Leopple Games
 
-This Turborepo starter is maintained by the Turborepo core team.
+Leopple Games is an npm workspaces monorepo powered by Turborepo. It contains a NestJS backend, multiple frontend applications, and shared packages for styles, TypeScript, and ESLint configuration.
 
-## Using this example
+## Project Structure
 
-Run the following command:
-
-```sh
-npx create-turbo@latest
+```text
+apps/
+  backend/              NestJS API with TypeORM, PostgreSQL, Redis, and local S3
+  login-screen/         Vue + Vite frontend
+  games-list-screen/    React + Vite frontend
+  my-games-screen/      SvelteKit + Vite frontend
+  config-screen/        Angular frontend
+  details-game-screen/  Solid + Vite frontend
+packages/
+  eslint/               Shared ESLint configurations
+  styles/               Shared SCSS, themes, and bootstrap helpers
+  typescript/           Shared TypeScript configurations
 ```
 
-## What's inside?
+## Required Tools
 
-This Turborepo includes the following packages/apps:
+- Node.js `24.13.0` from `.nvmrc`
+- npm `11.6.2` from `packageManager`
+- Docker and Docker Compose for PostgreSQL, Redis, local S3, and containerized apps
+- Git, with Husky hooks installed by `npm install`
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+If you use `nvm`, start with:
 
 ```sh
-cd my-turborepo
-turbo build
+nvm use
+npm install
 ```
 
-Without global `turbo`, use your package manager:
+## Local Setup
+
+Install dependencies from the repository root:
 
 ```sh
-cd my-turborepo
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+npm install
 ```
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+Create the backend environment file:
 
 ```sh
-turbo build --filter=docs
+cp apps/backend/.env.example apps/backend/.env
 ```
 
-Without global `turbo`:
+When the backend runs in Docker, use Docker service hosts such as `postgresql`, `redis`, and `http://s3ninja:9000`. When it runs directly on your machine, use `127.0.0.1` or `localhost` as indicated in `apps/backend/.env.example`.
+
+Start the supporting services:
 
 ```sh
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+npm run docker:db
+npm run docker:service
 ```
 
-### Develop
+## Main Commands
 
-To develop all apps and packages, run the following command:
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Runs all workspace development tasks through Turbo. |
+| `npm run build` | Builds every app and package that defines a build script. |
+| `npm run lint` | Runs ESLint across the workspaces. |
+| `npm run check-types` | Runs TypeScript validation across the workspaces. |
+| `npm run test` | Runs tests for workspaces that define a test script. |
+| `npm run format` | Formats `ts`, `tsx`, and `md` files with Prettier. |
+| `npm run commit` | Opens the guided Commitizen commit flow. |
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+Run a single workspace with npm workspace targeting:
 
 ```sh
-cd my-turborepo
-turbo dev
+npm run dev -w backend
+npm run dev -w login-screen
+npm run test:unit -w login-screen
+npm run test:e2e -w backend
 ```
 
-Without global `turbo`, use your package manager:
+## Docker Commands
+
+| Command | Description |
+| --- | --- |
+| `npm run docker:dev:all` | Starts every app and service from `docker-compose.dev.yml`. |
+| `npm run docker:dev` | Runs each workspace `docker:dev` script through Turbo. |
+| `npm run docker:db` | Starts PostgreSQL and Redis. |
+| `npm run docker:service` | Starts the local S3 service with S3 Ninja. |
+| `npm run docker:dev:build` | Rebuilds the Docker images. |
+| `npm run docker:dev:down` | Stops the development Docker stack. |
+
+Default local ports:
+
+- Backend API: `http://localhost:8081`
+- Swagger: `http://localhost:8081/api`
+- Login screen: `http://localhost:3000`
+- Games list screen: `http://localhost:3001`
+- My games screen: `http://localhost:3002`
+- Config screen: `http://localhost:3003`
+- Game details screen: `http://localhost:3004`
+- PostgreSQL: `5432`
+- Redis: `6379`
+- S3 Ninja: `http://localhost:9444`
+
+## Quality, Tests, and Commits
+
+The project uses TypeScript, ESLint, Prettier, Husky, lint-staged, Commitlint, Commitizen, and Changesets. Before opening a pull request, run:
 
 ```sh
-cd my-turborepo
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+npm run lint
+npm run check-types
+npm run test
+npm run build
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+Commits must follow Conventional Commits with a required scope:
 
 ```sh
-turbo dev --filter=web
+feat(53): create route me
+fix(761): adjust auth validation
 ```
 
-Without global `turbo`:
+For versioned package changes, create a changeset:
 
 ```sh
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+npm run changeset
 ```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)

@@ -2,8 +2,7 @@ import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
-import htmlPlugin from '@html-eslint/eslint-plugin';
-import htmlParser from '@html-eslint/parser';
+
 import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
@@ -25,18 +24,7 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
-  {
-    files: ['**/*.html'],
-    plugins: { '@html-eslint': htmlPlugin },
-    languageOptions: { parser: htmlParser },
-    rules: {
-      ...htmlPlugin.configs.recommended.rules,
-      '@html-eslint/indent': ['error', 2],
-      '@html-eslint/element-newline': 'off',
-      '@html-eslint/require-closing-tags': 'off',
-      '@html-eslint/no-extra-spacing-attrs': 'off',
-    },
-  },
+
   {
     files: ['**/*.{js,ts,angular.ts}'],
     rules: {
